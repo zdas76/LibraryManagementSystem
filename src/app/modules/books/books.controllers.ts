@@ -5,11 +5,11 @@ import { BooksService } from "./books.services";
 
 
 const createBooks = catchAsync(async (req, res)=> {
-console.log(req.body)
+
 const result  = await BooksService.createBooksInToDB(req.body)
 
 sendResponst(res, {
-    statusCode: StatusCodes.OK,
+    statusCode: StatusCodes.CREATED,
     success: true,
     message: "Book created successfuly",
     data: result,
@@ -23,25 +23,53 @@ const getAllBooks = catchAsync(async(req, res)=> {
     sendResponst(res, {
         statusCode: StatusCodes.OK,
         success: true,
-        message: "Book created successfuly",
+        message: "Books retrieved successfully",
         data: result,
       });
 })
 
 const getBooksById = catchAsync(async(req, res)=> {
-const {id }= req.params
-    const result  = await BooksService.getBookByIdFromDB(id)
+const {bookId }= req.params
+    const result  = await BooksService.getBookByIdFromDB(bookId)
 
     sendResponst(res, {
         statusCode: StatusCodes.OK,
         success: true,
-        message: "Book created successfuly",
+        message: "Book retrieved successfully",
         data: result,
       });
 })
 
+
+const updateBooksById = catchAsync(async(req, res)=> {
+    const {bookId }= req.params
+        const result  = await BooksService.updateBooksIntoDB(bookId, req.body)
+    
+        sendResponst(res, {
+            statusCode: StatusCodes.OK,
+            success: true,
+            message: "Book updated successfully",
+            data: result,
+          });
+    })
+
+
+const deleteBooksById = catchAsync(async(req, res)=> {
+    const {bookId }= req.params
+        const result  = await BooksService.deleteBookByIdFromDB(bookId )
+    
+        sendResponst(res, {
+            statusCode: StatusCodes.OK,
+            success: true,
+            message: "Book successfully deleted",
+            data: result,
+          });
+    })
+
 export const BooksControllers = {
     createBooks,
     getAllBooks,
-    getBooksById
+    getBooksById,
+    updateBooksById,
+    deleteBooksById
 }

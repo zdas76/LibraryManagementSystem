@@ -5,6 +5,7 @@ CREATE TABLE "books" (
     "genre" TEXT NOT NULL,
     "publishedYear" INTEGER NOT NULL,
     "totalCopies" INTEGER NOT NULL,
+    "availableCopies" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
