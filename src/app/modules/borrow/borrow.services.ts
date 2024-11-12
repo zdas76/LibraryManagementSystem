@@ -20,7 +20,7 @@ const results = await prisma.borrowRecord.findMany({
     where: {
       returnDate: null,
       borrowDate: {
-        lt: new Date(new Date().setDate(new Date().getDate() - 7)), 
+        lt: new Date(new Date().setDate(new Date().getDate() - 14)), 
       },
     },
     include: {
@@ -42,7 +42,7 @@ const results = await prisma.borrowRecord.findMany({
       borrowId: borrow.borrowId,
       bookTitle: borrow.book.title,
       borrowerName: borrow.member.name,
-      overdueDays: differenceInDays(new Date(), new Date(borrow.borrowDate)) - 7,
+      overdueDays: differenceInDays(new Date(), new Date(borrow.borrowDate)) - 14,
     }));
     return resultWithOverdueDays;
   }

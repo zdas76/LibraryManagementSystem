@@ -41,7 +41,7 @@ const getAllOverdueFromDB = () => __awaiter(void 0, void 0, void 0, function* ()
         where: {
             returnDate: null,
             borrowDate: {
-                lt: new Date(new Date().setDate(new Date().getDate() - 7)),
+                lt: new Date(new Date().setDate(new Date().getDate() - 14)),
             },
         },
         include: {
@@ -62,7 +62,7 @@ const getAllOverdueFromDB = () => __awaiter(void 0, void 0, void 0, function* ()
             borrowId: borrow.borrowId,
             bookTitle: borrow.book.title,
             borrowerName: borrow.member.name,
-            overdueDays: (0, date_fns_1.differenceInDays)(new Date(), new Date(borrow.borrowDate)) - 7,
+            overdueDays: (0, date_fns_1.differenceInDays)(new Date(), new Date(borrow.borrowDate)) - 14,
         }));
         return resultWithOverdueDays;
     }
