@@ -5,7 +5,7 @@ import { ReturnService } from "./return.services";
 
 const createReturn = catchAsync(async(req, res)=> {
 
-    const result = await ReturnService.createReturnFromDB(req.body)
+    const result = await ReturnService.createReturnFromDB(req.body.borrowId)
 
     sendResponst(res, {
         success: true,

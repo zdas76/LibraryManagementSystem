@@ -1,45 +1,73 @@
-import { BorrowRecord } from "@prisma/client"
-import prisma from "../../../shared/prisma"
-import { differenceInDays } from 'date-fns';
+import { BorrowRecord } from "@prisma/client";
+import prisma from "../../../shared/prisma";
+import { differenceInDays } from "date-fns";
 
+const createBorrow = async (payLoad: BorrowRecord) => {
+  const result = await prisma.borrowRecord.create({
+    data: {
+      bookId: payLoad.bookId,
+      memberId: payLoad.memberId,
+    },
+  });
 
-const createBorrow = async(payLoad:BorrowRecord)=> {
-    
-    const result = await prisma.borrowRecord.create({
-        
-        data: {
-            bookId: payLoad.bookId,
-            memberId : payLoad.memberId
-        },
+  const { returnDate, ...OthersFields } = result;
+  return OthersFields;
+};
+
+const getAllOverdueFromDB = async () => {
+  
+const results = await prisma.borrowRecord.findMany({
+    where: {
+      returnDate: null,
+      borrowDate: {
+        lt: new Date(new Date().setDate(new Date().getDate() - 7)), 
+      },
+    },
+    include: {
+      book: {
         select: {
-            returnDate: false,
-          },
-    })
-return result;
-}
+          title: true,
+        },
+      },
+      member: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
 
-const getAllOverdueFromDB = async()=> {
-    
-    const results = await prisma.$queryRaw`
-  SELECT *
-  FROM "borrowRecorts"
-  WHERE "returnDate" IS NULL
-    AND  NOW() > "borrowDate" + interval '7 days';
-`;
- if(results?.length > 0){
-    const resultWithOverDueDays = results.map((borrow: { bookId: string; book: { title: string; }; member: { name: string; }; borrowDate: number; }) => ({
-        borrowId: borrow.bookId,
-        bookTitle: borrow.book.title,
-        borrowerName: borrow.member.name,
-        overdueDays: differenceInDays(new Date(), new Date(borrow.borrowDate + 7))
+  if (results.length) {
+    const resultWithOverdueDays = results.map((borrow) => ({
+      borrowId: borrow.borrowId,
+      bookTitle: borrow.book.title,
+      borrowerName: borrow.member.name,
+      overdueDays: differenceInDays(new Date(), new Date(borrow.borrowDate)) - 7,
     }));
-    return resultWithOverDueDays
- }
-    
-return null;
-}
+    return resultWithOverdueDays;
+  }
 
+  return null;
+  }
+
+
+const updateBorrow = async (
+  borrowId: string,
+  payload: Partial<BorrowRecord>
+) => {
+  const result = await prisma.borrowRecord.update({
+    where: {
+      borrowId,
+    },
+    data: {
+      borrowDate: payload.borrowDate,
+    },
+  });
+
+  return result;
+};
 export const BorrowService = {
-    createBorrow,
-    getAllOverdueFromDB
-}
+  createBorrow,
+  getAllOverdueFromDB,
+  updateBorrow,
+};
