@@ -3,7 +3,9 @@ Project Name & Description:
 
     Purpose : This project aims to develop an Application Programming Interface (API) for a Library Management System. The API will provide a set of endpoints that can be used to interact with the library's database, allowing for automated tasks, data integration, and the creation of custom library applications.
 
-Live URL: Link to the live deployment of your backend.
+Live URL: 
+Vercel Live Link: https://milestone-8.vercel.app/
+git Link: https://github.com/zdas76/LibraryManagementSystem.git
 
 Technology Stack & Packages: 
 Technologies: Node, express, postGresQL, Prisma ORM, TypeScripte and 
