@@ -14,5 +14,3 @@ Setup Instructions: Provide clear steps for installation and running the applica
 Key Features & Functionality: Highlight the main features and functionality of your project.
 
 Known Issues/Bugs: Mention any unresolved issues or bugs.
-
-Professional Formatting: The README should be neatly formatted and easy to navigate.
