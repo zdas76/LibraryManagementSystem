@@ -2,6 +2,7 @@ import express from "express";
 import { BooksRouter } from "../modules/books/books.router";
 import { BorrowRouter } from "../modules/borrow/borrow.router";
 import { MembersRouter } from "../modules/members/members.router";
+import { ReturnRouter } from "../modules/return/return.router";
 
 
 const router = express.Router();
@@ -19,6 +20,11 @@ const moduleRoutes = [
     path: "/borrow",
     router: BorrowRouter,
   },
+  {
+    path: "/return",
+    router: ReturnRouter,
+  },
+  
   
 ];
 

@@ -34,7 +34,7 @@ const getMemberById =catchAsync(async(req, res)=> {
     sendResponst(res, {
         success: true,
         statusCode: StatusCodes.OK,
-        message: "Members retrieved successfully",
+        message: "Member retrieved successfully",
         data: result
     })
 
