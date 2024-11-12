@@ -1,12 +1,12 @@
 Project Name & Description: 
 
-    Name: Library Management System API
+    ** Library Management System API **
 
     Purpose : This project aims to develop an Application Programming Interface (API) for a Library Management System. The API will provide a set of endpoints that can be used to interact with the library's database, allowing for automated tasks, data integration, and the creation of custom library applications.
 
 Live URL: 
-Vercel Live Link: https://milestone-8.vercel.app/
-git Link: https://github.com/zdas76/LibraryManagementSystem.git
+Vercel Live Link: [https://milestone-8.vercel.app/] [^2]
+git Link: [https://github.com/zdas76/LibraryManagementSystem.git]
 
 Technology Stack & Packages: 
 Technologies: 
