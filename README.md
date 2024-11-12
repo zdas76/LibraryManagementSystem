@@ -53,28 +53,28 @@ Key Features & Functionality:
     Consistent error response structure  
 
 API Endpoints  
-Books:  
-POST /api/books  
-GET /api/books  
-GET /api/books/:bookId  
-PUT /api/books/:bookId  
-DELETE /api/books/:bookId  
+    Books:  
+        POST /api/books  
+        GET /api/books  
+        GET /api/books/:bookId  
+        PUT /api/books/:bookId  
+        DELETE /api/books/:bookId  
 
-Members: 
-POST /api/members  
-GET /api/members  
-GET /api/members/:memberId  
-PUT /api/members/:memberId  
-DELETE /api/members/:memberId  
+    Members: 
+        POST /api/members  
+        GET /api/members  
+        GET /api/members/:memberId  
+        PUT /api/members/:memberId  
+        DELETE /api/members/:memberId  
 
 
-Borrow/Return:  
-POST /api/borrow  
-POST /api/return  
-GET /api/borrow/overdue  
+    Borrow/Return:  
+        POST /api/borrow  
+        POST /api/return  
+        GET /api/borrow/overdue  
 
 
 Future Improvements  
-Implement user authentication and authorization  
-Add pagination for book and member lists  
-Create a front-end interface for easier management  
+    Implement user authentication and authorization  
+    Add pagination for book and member lists  
+    Create a front-end interface for easier management  
